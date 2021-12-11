@@ -23,6 +23,10 @@ fillTitle = openpyxl.styles.PatternFill(patternType='solid', fgColor=green)
 
 side   = openpyxl.styles.borders.Side(style='thin', color='000000')
 border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
+
+side2  = openpyxl.styles.borders.Side(style='thick', color='000000')
+border2= openpyxl.styles.borders.Border(top=side, bottom=side2, left=side, right=side)
+
 font   = openpyxl.styles.Font(name='メイリオ')
 
 # 最初のブロック
@@ -54,11 +58,11 @@ for y in range(8):
         if y == 0:
             cell.value = "text " + str(x)
             cell.fill = fillTitle
+            cell.border = border2
         else:
             cell.value = x * y
             cell.fill = fill
-
-        cell.border = border
+            cell.border = border
         cell.font = font
 
 ws1.auto_filter.ref = ws1.dimensions

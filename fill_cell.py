@@ -23,6 +23,10 @@ fillTitle = openpyxl.styles.PatternFill(patternType='solid', fgColor=green)
 
 side   = openpyxl.styles.borders.Side(style='thin', color='000000')
 border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
+
+side2  = openpyxl.styles.borders.Side(style='thick', color='000000')
+border2= openpyxl.styles.borders.Border(top=side, bottom=side2, left=side, right=side)
+
 font   = openpyxl.styles.Font(name='メイリオ')
 
 for row in range(2, 10):
@@ -37,9 +41,10 @@ for i, row in enumerate(ws1):
     for cell in row:
         if i == 0:
             ws1[cell.coordinate].fill = fillTitle
+            ws1[cell.coordinate].border = border2
         else:
             ws1[cell.coordinate].fill = fill
-        ws1[cell.coordinate].border = border
+            ws1[cell.coordinate].border = border
         ws1[cell.coordinate].font = font
 
 ws1.auto_filter.ref = ws1.dimensions

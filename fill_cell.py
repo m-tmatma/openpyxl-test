@@ -10,10 +10,6 @@ import sys
 
 output_xlsx = "output_ " + os.path.basename(sys.argv[0]) + '.xlsx'
 
-from openpyxl.styles import PatternFill
-from openpyxl.styles.borders import Border, Side
-from openpyxl.styles import Font
-
 # read input xlsx
 wb1 = openpyxl.Workbook()
 ws1 = wb1.worksheets[0]
@@ -22,12 +18,12 @@ ws1 = wb1.worksheets[0]
 green = '92d050' # R = 146, G = 208, B = 80
 yello = 'ffff00' # R = 255, G = 255, B = 0
 
-fill      = PatternFill(patternType='solid', fgColor=yello)
-fillTitle = PatternFill(patternType='solid', fgColor=green)
+fill      = openpyxl.styles.PatternFill(patternType='solid', fgColor=yello)
+fillTitle = openpyxl.styles.PatternFill(patternType='solid', fgColor=green)
 
-side = Side(style='thin', color='000000')
-border = Border(top=side, bottom=side, left=side, right=side)
-font = Font(name='メイリオ')
+side   = openpyxl.styles.borders.Side(style='thin', color='000000')
+border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
+font   = openpyxl.styles.Font(name='メイリオ')
 
 for row in range(2, 10):
     for column in range(5, 10):

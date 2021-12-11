@@ -5,12 +5,14 @@
 '''
 
 import openpyxl
+import os
+import sys
+
+output_xlsx = "output_ " + os.path.basename(sys.argv[0]) + '.xlsx'
+
 from openpyxl.styles import PatternFill
 from openpyxl.styles.borders import Border, Side
 from openpyxl.styles import Font
-
-# set input file name
-inputfile = 'test2.xlsx'
 
 # read input xlsx
 wb1 = openpyxl.Workbook()
@@ -65,5 +67,4 @@ for y in range(8):
 
 ws1.auto_filter.ref = ws1.dimensions
 
-# save target xlsx file
-wb1.save(inputfile)
+wb1.save(output_xlsx)

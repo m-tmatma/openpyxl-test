@@ -65,6 +65,26 @@ for y in range(8):
             cell.border = border
         cell.font = font
 
+
+# 三番目のブロック
+# iter_rows 指定
+offset_x = 5
+offset_y = 25
+dx = 5
+dy = 15
+
+for y, row in enumerate( ws1.iter_rows(min_row=offset_y, min_col=offset_x, max_row=offset_y + dy, max_col=offset_x + dx) ):
+    for x, cell in enumerate(row):
+        if y == 0:
+            cell.value = "text " + str(x)
+            cell.fill = fillTitle
+            cell.border = border2
+        else:
+            cell.value = x * y
+            cell.fill = fill
+            cell.border = border
+        cell.font = font
+
 ws1.auto_filter.ref = ws1.dimensions
 
 wb1.save(output_xlsx)

@@ -20,7 +20,7 @@ jobs:
         pip install pylint
         pip install openpyxl
     - name: build
-      run: python3 new.py
+      run: ls -1 *.py | xargs -n 1 -I{} python3 {}
       
     - name: artifact xlsx
       uses: actions/upload-artifact@v2

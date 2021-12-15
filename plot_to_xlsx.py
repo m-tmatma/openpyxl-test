@@ -16,6 +16,9 @@ from openpyxl.utils.units import EMU_to_pixels
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
 
 def plot(multiple):
+    '''
+    Make a plot to memory object.
+    '''
     fig, ax = plt.subplots(figsize=(4, 3))
     x=np.array([1,2,3,4,5])
     y=np.array([2,4,5,1,2]) * multiple
@@ -33,6 +36,9 @@ def plot(multiple):
     return img
 
 def insert_plt(worksheet, num=10, start_row=1, start_column=1):
+    '''
+    Insert matplotlit plot to EXCEL sheet.
+    '''
     green = '92d050' # R = 146, G = 208, B = 80
     yello = 'ffff00' # R = 255, G = 255, B = 0
 

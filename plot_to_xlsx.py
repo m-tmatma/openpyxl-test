@@ -24,7 +24,7 @@ def plot(multiple):
     fig.savefig(img_data, format='png')
 
     img = openpyxl.drawing.image.Image(img_data)
-    
+
     # https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.figimage
     # https://www.unitconverters.net/typography/inch-to-pixel-x.htm
     img.width  = fig.get_figwidth()  * fig.dpi
@@ -75,7 +75,7 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
         marker= AnchorMarker(col=column, row=row, colOff=coloffset, rowOff=rowoffset)
         img.anchor= OneCellAnchor(_from=marker, ext=size)
         worksheet.add_image(img)
-        
+
         cell = worksheet.cell(row=i+1,column=1)
         cell.border = border
 

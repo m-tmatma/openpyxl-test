@@ -22,4 +22,4 @@ jobs:
         pip install numpy pandas matplotlib
     - name: Analysing the code with pylint
       run: |
-        pylint `ls -R|grep .py$|xargs`
+        ls -1 *.py | xargs -n 1 -I{} pylint {}

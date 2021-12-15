@@ -4,9 +4,9 @@
     https://stackoverflow.com/questions/51566349/openpyxl-how-to-add-filters-to-all-columns
 '''
 
-import openpyxl
 import os
 import sys
+import openpyxl
 
 output_xlsx = "output_ " + os.path.basename(sys.argv[0]) + '.xlsx'
 

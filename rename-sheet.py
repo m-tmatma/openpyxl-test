@@ -1,6 +1,6 @@
-import openpyxl
 import os
 import sys
+import openpyxl
 
 output_xlsx = "output_ " + os.path.basename(sys.argv[0]) + '.xlsx'
 

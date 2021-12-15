@@ -73,7 +73,15 @@ offset_y = 25
 dx = 5
 dy = 15
 
-for y, row in enumerate( ws1.iter_rows(min_row=offset_y, min_col=offset_x, max_row=offset_y + dy, max_col=offset_x + dx) ):
+min_col=offset_x
+min_row=offset_y
+
+max_col=offset_x + dx
+max_row=offset_y + dy
+
+iter_rows = ws1.iter_rows(min_row=min_row, min_col=min_col, max_row=max_row, max_col=max_col)
+
+for y, row in enumerate(iter_rows):
     for x, cell in enumerate(row):
         if y == 0:
             cell.value = "text " + str(x)

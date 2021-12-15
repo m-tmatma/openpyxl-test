@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU
-from openpyxl.utils.units import EMU_to_pixels
+#from openpyxl.utils.units import EMU_to_pixels
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
 
 def plot(multiple):
@@ -38,11 +38,11 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     '''
     Insert matplotlit plot to EXCEL sheet.
     '''
-    green = '92d050' # R = 146, G = 208, B = 80
-    yello = 'ffff00' # R = 255, G = 255, B = 0
+    #green = '92d050' # R = 146, G = 208, B = 80
+    #yello = 'ffff00' # R = 255, G = 255, B = 0
 
-    fill      = openpyxl.styles.PatternFill(patternType='solid', fgColor=yello)
-    fillTitle = openpyxl.styles.PatternFill(patternType='solid', fgColor=green)
+    #fill      = openpyxl.styles.PatternFill(patternType='solid', fgColor=yello)
+    #fillTitle = openpyxl.styles.PatternFill(patternType='solid', fgColor=green)
 
     side   = openpyxl.styles.borders.Side(style='thin', color='000000')
     border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
@@ -51,7 +51,7 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     cellh= lambda x: c2e((x * 49.77)/99)
     cellw= lambda x: c2e((x * (18.65-1.71))/10)
     p2e = pixels_to_EMU
-    e2p = EMU_to_pixels
+    #e2p = EMU_to_pixels
 
     for i in range(1, num+1):
         multiple = i + 1

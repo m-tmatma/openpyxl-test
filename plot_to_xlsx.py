@@ -58,12 +58,13 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
 
         img = plot(multiple)
 
-        h, w = img.height, img.width
-        size = XDRPositiveSize2D(p2e(w), p2e(h))
+        height = img.height
+        width  = img.width
+        size = XDRPositiveSize2D(p2e(width), p2e(height))
         row = i+1
 
         worksheet.column_dimensions["B"].width     = 80
-        worksheet.row_dimensions[row].height       = h
+        worksheet.row_dimensions[row].height       = height
 
         row    = start_row + i - 1
         column = start_column

@@ -48,13 +48,16 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     side   = openpyxl.styles.borders.Side(style='thin', color='000000')
     border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
 
+    c2e = cm_to_EMU
+    cellh= lambda x: c2e((x * 49.77)/99)
+    cellw= lambda x: c2e((x * (18.65-1.71))/10)
+    p2e = pixels_to_EMU
+    e2p = EMU_to_pixels
+
     for i in range(1, num+1):
         multiple = i + 1
 
         img = plot(multiple)
-
-        p2e = pixels_to_EMU
-        e2p = EMU_to_pixels
 
         h, w = img.height, img.width
         size = XDRPositiveSize2D(p2e(w), p2e(h))
@@ -66,14 +69,10 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
         row    = start_row + i - 1
         column = start_column
 
-        c2e = cm_to_EMU
 
         # Calculated number of cells width or height from cm into EMUs
         # Want to place image in row 5 (6 in excel), column 2 (C in excel)
         # Also offset by half a column.
-
-        cellh= lambda x: c2e((x * 49.77)/99)
-        cellw= lambda x: c2e((x * (18.65-1.71))/10)
 
         coloffset= cellw(0.2)
         rowoffset= cellh(0.2)

@@ -20,6 +20,7 @@ jobs:
         pip install pylint
         pip install openpyxl
         pip install numpy
+        pip install matplotlib
     - name: build
       run: ls -1 *.py | xargs -n 1 -I{} python3 {}
       

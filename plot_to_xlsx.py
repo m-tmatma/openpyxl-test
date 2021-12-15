@@ -2,12 +2,12 @@
     https://stackoverflow.com/questions/55309671/more-precise-image-placement-possible-with-openpyxl-pixel-coordinates-instead
 '''
 
-import openpyxl
 import os
 import sys
+import io
+import openpyxl
 import numpy as np
 import matplotlib.pyplot as plt
-import io
 
 from openpyxl.drawing.spreadsheet_drawing import AbsoluteAnchor
 from openpyxl.drawing.xdr import XDRPoint2D, XDRPositiveSize2D

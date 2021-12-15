@@ -9,8 +9,7 @@ import openpyxl
 import numpy as np
 import matplotlib.pyplot as plt
 
-from openpyxl.drawing.spreadsheet_drawing import AbsoluteAnchor
-from openpyxl.drawing.xdr import XDRPoint2D, XDRPositiveSize2D
+from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU
 from openpyxl.utils.units import EMU_to_pixels
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker

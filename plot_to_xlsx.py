@@ -34,6 +34,15 @@ def plot(multiple):
     print(img.width, img.height)
     return img
 
+c2e = cm_to_EMU
+p2e = pixels_to_EMU
+
+def cellh(x):
+    return c2e((x * 49.77)/99)
+
+def cellw(x):
+    return c2e((x * (18.65-1.71))/10)
+
 def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     '''
     Insert matplotlit plot to EXCEL sheet.
@@ -47,10 +56,6 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     side   = openpyxl.styles.borders.Side(style='thin', color='000000')
     border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
 
-    c2e = cm_to_EMU
-    cellh= lambda x: c2e((x * 49.77)/99)
-    cellw= lambda x: c2e((x * (18.65-1.71))/10)
-    p2e = pixels_to_EMU
     #e2p = EMU_to_pixels
 
     for i in range(1, num+1):

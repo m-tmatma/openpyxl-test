@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from openpyxl.drawing.xdr import XDRPositiveSize2D
-from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU
+from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU, pixels_to_points
 #from openpyxl.utils.units import EMU_to_pixels
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
 
@@ -63,7 +63,9 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
         size = XDRPositiveSize2D(p2e(width), p2e(height))
         row = i+1
 
-        worksheet.column_dimensions["B"].width     = 80
+        cell = worksheet.cell(row=i,column=1)
+        # width unit is character counts.
+        worksheet.column_dimensions["B"].width     = 2.2 * int( pixels_to_points(width) / cell.font.size + 1)
         worksheet.row_dimensions[row].height       = height
 
         row    = start_row + i - 1

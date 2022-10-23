@@ -34,6 +34,21 @@ def plot(multiple):
     print(img.width, img.height)
     return img
 
+c2e = cm_to_EMU
+p2e = pixels_to_EMU
+
+def cellh(x):
+    '''
+    convert from cell height
+    '''
+    return c2e((x * 49.77)/99)
+
+def cellw(x):
+    '''
+    convert from cell width
+    '''
+    return c2e((x * (18.65-1.71))/10)
+
 def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     '''
     Insert matplotlit plot to EXCEL sheet.
@@ -47,10 +62,6 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     side   = openpyxl.styles.borders.Side(style='thin', color='000000')
     border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
 
-    c2e = cm_to_EMU
-    cellh= lambda x: c2e((x * 49.77)/99)
-    cellw= lambda x: c2e((x * (18.65-1.71))/10)
-    p2e = pixels_to_EMU
     #e2p = EMU_to_pixels
 
     for i in range(1, num+1):
@@ -65,8 +76,9 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
 
         cell = worksheet.cell(row=i,column=1)
         # width unit is character counts.
-        worksheet.column_dimensions["B"].width     = 2.2 * int( pixels_to_points(width) / cell.font.size + 1)
-        worksheet.row_dimensions[row].height       = height
+        width_in_font = 2.2 * int( pixels_to_points(width) / cell.font.size + 1)
+        worksheet.column_dimensions["B"].width = width_in_font
+        worksheet.row_dimensions[row].height   = height
 
         row    = start_row + i - 1
         column = start_column

@@ -15,7 +15,6 @@ except:
 
 from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU, pixels_to_points
-#from openpyxl.utils.units import EMU_to_pixels
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
 
 def save_to_excel(fig):
@@ -70,8 +69,6 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
 
     side   = openpyxl.styles.borders.Side(style='thin', color='000000')
     border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
-
-    #e2p = EMU_to_pixels
 
     for i in range(1, num+1):
         multiple = i + 1

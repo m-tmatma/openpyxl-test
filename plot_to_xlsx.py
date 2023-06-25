@@ -94,7 +94,7 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
 
         row    = start_row + i - 1
         column = start_column
-        img = plot_as_image(worksheet, row, column, fig)
+        plot_as_image(worksheet, row, column, fig)
         # width unit is character counts.
 
         cell = worksheet.cell(row=row+1,column=column)

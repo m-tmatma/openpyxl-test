@@ -5,9 +5,13 @@
 import os
 import sys
 import io
-import openpyxl
-import numpy as np
-import matplotlib.pyplot as plt
+try:
+    import openpyxl
+    import numpy as np
+    import matplotlib.pyplot as plt
+except:
+    print("pip install openpyxl numpy matplotlib")
+    sys.exit(1)
 
 from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU, pixels_to_points

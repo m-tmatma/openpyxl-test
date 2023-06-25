@@ -44,6 +44,7 @@ p2e = pixels_to_EMU
 def cellh(x):
     '''
     convert from cell height
+    1 cm = 360000 EMUs
     '''
     return c2e((x * 49.77)/99)
 

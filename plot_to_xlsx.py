@@ -82,7 +82,7 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
         # width unit is character counts.
         width_in_font = 2.2 * int( pixels_to_points(width) / cell.font.size + 1)
         worksheet.column_dimensions["B"].width = width_in_font
-        worksheet.row_dimensions[row].height   = height
+        worksheet.row_dimensions[row].height   = pixels_to_points(height * 1.1)
 
         row    = start_row + i - 1
         column = start_column

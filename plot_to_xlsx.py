@@ -17,7 +17,7 @@ from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU, pixels_to_points
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
 
-def save_to_excel(fig):
+def save_to_image(fig):
     img_data = io.BytesIO()
     fig.savefig(img_data, format='png')
     img = openpyxl.drawing.image.Image(img_data)
@@ -29,7 +29,7 @@ def save_to_excel(fig):
     return img
 
 
-def plot(multiple):
+def plot_as_image(multiple):
     '''
     Make a plot to memory object.
     '''
@@ -37,7 +37,7 @@ def plot(multiple):
     x=np.array([1,2,3,4,5])
     y=np.array([2,4,5,1,2]) * multiple
     ax.plot(x, y)
-    img = save_to_excel(fig)
+    img = save_to_image(fig)
     print(img.width, img.height)
     return img
 
@@ -73,7 +73,7 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     for i in range(1, num+1):
         multiple = i + 1
 
-        img = plot(multiple)
+        img = plot_as_image(multiple)
 
         height = img.height
         width  = img.width

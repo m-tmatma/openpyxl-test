@@ -22,16 +22,16 @@ c2e = cm_to_EMU
 p2e = pixels_to_EMU
 
 def cellh(x):
-    '''
+    """
     convert from cell height
     1 cm = 360000 EMUs
-    '''
+    """
     return c2e((x * 49.77)/99)
 
 def cellw(x):
-    '''
+    """
     convert from cell width
-    '''
+    """
     return c2e((x * (18.65-1.71))/10)
 
 def save_to_image(fig):
@@ -47,11 +47,11 @@ def save_to_image(fig):
 
 
 def plot_as_image(worksheet, row, column, fig):
-    '''
+    """
     Make a plot to memory object.
     row   : 0-based
     column: 0-based
-    '''
+    """
 
     img = save_to_image(fig)
     print(img.width, img.height)
@@ -80,9 +80,9 @@ def plot_as_image(worksheet, row, column, fig):
     worksheet.add_image(img)
 
 def insert_plt(worksheet, num=10, start_row=1, start_column=1):
-    '''
+    """
     Insert matplotlit plot to EXCEL sheet.
-    '''
+    """
     #green = '92d050' # R = 146, G = 208, B = 80
     #yello = 'ffff00' # R = 255, G = 255, B = 0
     #fill      = openpyxl.styles.PatternFill(patternType='solid', fgColor=yello)

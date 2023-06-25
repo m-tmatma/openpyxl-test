@@ -49,8 +49,6 @@ def plot_as_image(worksheet, row, column, fig):
     '''
     Make a plot to memory object.
     '''
-    side   = openpyxl.styles.borders.Side(style='thin', color='000000')
-    border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
 
     img = save_to_image(fig)
     print(img.width, img.height)
@@ -74,12 +72,6 @@ def plot_as_image(worksheet, row, column, fig):
     img.anchor= OneCellAnchor(_from=marker, ext=size)
     worksheet.add_image(img)
 
-    cell = worksheet.cell(row=row+1,column=column)
-    cell.border = border
-
-    cell = worksheet.cell(row=row+1,column=column+1)
-    cell.border = border
-
 def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     '''
     Insert matplotlit plot to EXCEL sheet.
@@ -88,6 +80,9 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     #yello = 'ffff00' # R = 255, G = 255, B = 0
     #fill      = openpyxl.styles.PatternFill(patternType='solid', fgColor=yello)
     #fillTitle = openpyxl.styles.PatternFill(patternType='solid', fgColor=green)
+    side   = openpyxl.styles.borders.Side(style='thin', color='000000')
+    border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
+
     for i in range(1, num+1):
         multiple = i + 1
 
@@ -101,6 +96,12 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
         column = start_column
         img = plot_as_image(worksheet, row, column, fig)
         # width unit is character counts.
+
+        cell = worksheet.cell(row=row+1,column=column)
+        cell.border = border
+
+        cell = worksheet.cell(row=row+1,column=column+1)
+        cell.border = border
 
 
 output_xlsx = "output_ " + os.path.basename(sys.argv[0]) + '.xlsx'

@@ -18,6 +18,18 @@ from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU, pixels_to_points
 #from openpyxl.utils.units import EMU_to_pixels
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
 
+def save_to_excel(fig):
+    img_data = io.BytesIO()
+    fig.savefig(img_data, format='png')
+    img = openpyxl.drawing.image.Image(img_data)
+
+    # https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.figimage
+    # https://www.unitconverters.net/typography/inch-to-pixel-x.htm
+    img.width  = fig.get_figwidth()  * fig.dpi
+    img.height = fig.get_figheight() * fig.dpi
+    return img
+
+
 def plot(multiple):
     '''
     Make a plot to memory object.
@@ -26,15 +38,7 @@ def plot(multiple):
     x=np.array([1,2,3,4,5])
     y=np.array([2,4,5,1,2]) * multiple
     ax.plot(x, y)
-    img_data = io.BytesIO()
-    fig.savefig(img_data, format='png')
-
-    img = openpyxl.drawing.image.Image(img_data)
-
-    # https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.figimage
-    # https://www.unitconverters.net/typography/inch-to-pixel-x.htm
-    img.width  = fig.get_figwidth()  * fig.dpi
-    img.height = fig.get_figheight() * fig.dpi
+    img = save_to_excel(fig)
     print(img.width, img.height)
     return img
 

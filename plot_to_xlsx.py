@@ -45,18 +45,15 @@ def save_to_image(fig):
     return img
 
 
-def plot_as_image(worksheet, row, column, x, y):
+def plot_as_image(worksheet, row, column, fig):
     '''
     Make a plot to memory object.
     '''
     side   = openpyxl.styles.borders.Side(style='thin', color='000000')
     border = openpyxl.styles.borders.Border(top=side, bottom=side, left=side, right=side)
 
-    fig, ax = plt.subplots(figsize=(4, 3))
-    ax.plot(x, y)
     img = save_to_image(fig)
     print(img.width, img.height)
-
 
     height = img.height
     width  = img.width
@@ -97,9 +94,12 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
         x=np.array([1,2,3,4,5])
         y=np.array([2,4,5,1,2]) * multiple
 
+        fig, ax = plt.subplots(figsize=(4, 3))
+        ax.plot(x, y)
+
         row    = start_row + i - 1
         column = start_column
-        img = plot_as_image(worksheet, row, column, x, y)
+        img = plot_as_image(worksheet, row, column, fig)
         # width unit is character counts.
 
 

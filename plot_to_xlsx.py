@@ -46,9 +46,9 @@ def save_to_image(fig):
     return img
 
 
-def plot_as_image(worksheet, row, column, fig):
+def plot_to_excel_cell(worksheet, row, column, fig):
     """
-    Make a plot to memory object.
+    plot to an excel cell
     row   : 0-based
     column: 0-based
     """
@@ -96,8 +96,7 @@ def insert_plt(worksheet, num=10, start_row=1, start_column=1):
 
         row    = start_row + i - 1
         column = start_column
-        plot_as_image(worksheet, row, column, fig)
-        # width unit is character counts.
+        plot_to_excel_cell(worksheet, row, column, fig)
 
         cell = worksheet.cell(row=row+1,column=column)
         cell.border = border

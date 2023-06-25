@@ -54,8 +54,6 @@ def plot_as_image(worksheet, row, column, fig):
     """
 
     img = save_to_image(fig)
-    print(img.width, img.height)
-
     height = img.height
     width  = img.width
     size = XDRPositiveSize2D(p2e(width), p2e(height))
@@ -69,9 +67,6 @@ def plot_as_image(worksheet, row, column, fig):
 
     coloffset= cellw(0.2)
     rowoffset= cellh(0.2)
-    # Calculated number of cells width or height from cm into EMUs
-    # Want to place image in row 5 (6 in excel), column 2 (C in excel)
-    # Also offset by half a column.
 
     # https://openpyxl.readthedocs.io/en/latest/api/openpyxl.drawing.spreadsheet_drawing.html
     # col, row : from 0

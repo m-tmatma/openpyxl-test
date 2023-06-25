@@ -48,6 +48,8 @@ def save_to_image(fig):
 def plot_as_image(worksheet, row, column, fig):
     '''
     Make a plot to memory object.
+    row   : 0-based
+    column: 0-based
     '''
 
     img = save_to_image(fig)
@@ -58,6 +60,7 @@ def plot_as_image(worksheet, row, column, fig):
     size = XDRPositiveSize2D(p2e(width), p2e(height))
 
     # https://openpyxl.readthedocs.io/en/stable/api/openpyxl.cell.cell.html
+    # col, row : from 1
     cell = worksheet.cell(row=row+1,column=column+1)
     width_in_font = 2.2 * int( pixels_to_points(width) / cell.font.size + 1)
     worksheet.column_dimensions["B"].width = width_in_font

@@ -16,6 +16,7 @@ except:
 from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU, pixels_to_points
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
+from openpyxl.utils import get_column_letter
 
 c2e = cm_to_EMU
 p2e = pixels_to_EMU
@@ -63,7 +64,7 @@ def plot_as_image(worksheet, row, column, fig):
     # col, row : from 1
     cell = worksheet.cell(row=row+1,column=column+1)
     width_in_font = 2.2 * int( pixels_to_points(width) / cell.font.size + 1)
-    worksheet.column_dimensions["B"].width = width_in_font
+    worksheet.column_dimensions[get_column_letter(column + 1)].width = width_in_font
     worksheet.row_dimensions[row+1].height   = pixels_to_points(height * 1.1)
 
     coloffset= cellw(0.2)

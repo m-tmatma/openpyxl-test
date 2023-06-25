@@ -57,7 +57,8 @@ def plot_as_image(worksheet, row, column, fig):
     width  = img.width
     size = XDRPositiveSize2D(p2e(width), p2e(height))
 
-    cell = worksheet.cell(row=row,column=column)
+    # https://openpyxl.readthedocs.io/en/stable/api/openpyxl.cell.cell.html
+    cell = worksheet.cell(row=row+1,column=column+1)
     width_in_font = 2.2 * int( pixels_to_points(width) / cell.font.size + 1)
     worksheet.column_dimensions["B"].width = width_in_font
     worksheet.row_dimensions[row+1].height   = pixels_to_points(height * 1.1)
@@ -68,6 +69,8 @@ def plot_as_image(worksheet, row, column, fig):
     # Want to place image in row 5 (6 in excel), column 2 (C in excel)
     # Also offset by half a column.
 
+    # https://openpyxl.readthedocs.io/en/latest/api/openpyxl.drawing.spreadsheet_drawing.html
+    # col, row : from 0
     marker= AnchorMarker(col=column, row=row, colOff=coloffset, rowOff=rowoffset)
     img.anchor= OneCellAnchor(_from=marker, ext=size)
     worksheet.add_image(img)

@@ -17,6 +17,22 @@ from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU, pixels_to_points
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
 
+c2e = cm_to_EMU
+p2e = pixels_to_EMU
+
+def cellh(x):
+    '''
+    convert from cell height
+    1 cm = 360000 EMUs
+    '''
+    return c2e((x * 49.77)/99)
+
+def cellw(x):
+    '''
+    convert from cell width
+    '''
+    return c2e((x * (18.65-1.71))/10)
+
 def save_to_image(fig):
     img_data = io.BytesIO()
     fig.savefig(img_data, format='png')
@@ -66,22 +82,6 @@ def plot_as_image(worksheet, row, column, x, y):
 
     cell = worksheet.cell(row=row+1,column=column+1)
     cell.border = border
-
-c2e = cm_to_EMU
-p2e = pixels_to_EMU
-
-def cellh(x):
-    '''
-    convert from cell height
-    1 cm = 360000 EMUs
-    '''
-    return c2e((x * 49.77)/99)
-
-def cellw(x):
-    '''
-    convert from cell width
-    '''
-    return c2e((x * (18.65-1.71))/10)
 
 def insert_plt(worksheet, num=10, start_row=1, start_column=1):
     '''

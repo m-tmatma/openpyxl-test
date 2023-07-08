@@ -4,6 +4,7 @@ Test Program for conditional_formatting
 from openpyxl import Workbook
 #from openpyxl.styles import Color, Font, Border
 from openpyxl.styles import PatternFill, GradientFill
+from openpyxl.styles import Alignment
 #from openpyxl.styles.differential import DifferentialStyle
 #from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, Rule
 from openpyxl.formatting.rule import FormulaRule
@@ -20,6 +21,8 @@ ws.conditional_formatting.add('F1:F10', FormulaRule(formula=['F1=1'], stopIfTrue
 
 ws['D1'] = "A"
 ws['D2'] = "B"
+ws['D3'] = 10.2
+ws['D3'].alignment = Alignment(horizontal='right') 
 
 ws['E1'] = "A"
 ws['E2'] = "B"

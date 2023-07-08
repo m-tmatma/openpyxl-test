@@ -9,7 +9,7 @@ try:
     import openpyxl
     import numpy as np
     import matplotlib.pyplot as plt
-except:
+except ImportError:
     print("pip install openpyxl numpy matplotlib")
     sys.exit(1)
 

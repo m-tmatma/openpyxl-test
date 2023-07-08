@@ -1,7 +1,12 @@
+'''
+Test Program for conditional_formatting
+'''
 from openpyxl import Workbook
-from openpyxl.styles import Color, PatternFill, Font, Border, GradientFill
-from openpyxl.styles.differential import DifferentialStyle
-from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule, Rule
+#from openpyxl.styles import Color, Font, Border
+from openpyxl.styles import PatternFill, GradientFill
+#from openpyxl.styles.differential import DifferentialStyle
+#from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, Rule
+from openpyxl.formatting.rule import FormulaRule
 
 wb = Workbook()
 ws = wb.active

@@ -35,6 +35,9 @@ def cellw(x):
     return c2e((x * (18.65-1.71))/10)
 
 def save_to_image(fig):
+    """
+    save fignure to image
+    """
     img_data = io.BytesIO()
     fig.savefig(img_data, format='png')
     img = openpyxl.drawing.image.Image(img_data)

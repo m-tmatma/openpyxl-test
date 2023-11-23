@@ -24,7 +24,7 @@ ws.conditional_formatting.add('G1:G10', CellIsRule(operator='lessThan', formula=
 ws['D1'] = "A"
 ws['D2'] = "B"
 ws['D3'] = 10.2
-ws['D3'].alignment = Alignment(horizontal='right') 
+ws['D3'].alignment = Alignment(horizontal='right')
 
 ws['E1'] = "A"
 ws['E2'] = "B"
@@ -33,6 +33,6 @@ ws['F1'] = 0
 ws['F2'] = 1
 
 for i in range(1, 10+1):
-	ws[f'G{i}'] = i
+    ws[f'G{i}'] = i
 
 wb.save("test.xlsx")

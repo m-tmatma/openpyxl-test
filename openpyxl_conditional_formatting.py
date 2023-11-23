@@ -33,6 +33,6 @@ ws['F1'] = 0
 ws['F2'] = 1
 
 for i in range(1, 10+1):
-	ws[f'G{i}'] = i
+    ws[f'G{i}'] = i
 
 wb.save("test.xlsx")
